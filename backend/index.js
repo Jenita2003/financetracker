@@ -13,9 +13,6 @@ const corsOptions={
   };
   app.use(cors(corsOptions));
 
-
-// Middleware setup
-app.use(cors());
 app.use(bodyParser.json());
 
 // Storage configuration for file uploads
