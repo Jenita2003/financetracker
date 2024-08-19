@@ -8,7 +8,7 @@ const app = express();
 const port = 5000;
 
 const corsOptions={
-    origin:'https://frontend-finance-web-app.vercel.app/',
+    origin:'https://financetracker-frontend.vercel.app/',
     optionSuccessStatus:200,
   };
   app.use(cors(corsOptions));
