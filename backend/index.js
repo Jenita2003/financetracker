@@ -9,10 +9,9 @@ const port = 5000;
 
 const corsOptions = {
     origin: 'https://financetracker-frontend.vercel.app',
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-
 app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
@@ -43,32 +42,45 @@ const categories = {
 };
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
-    const results = [];
-    fs.createReadStream(req.file.path)
-        .pipe(csv())
-        .on('data', (data) => results.push(data))
-        .on('end', () => {
-            fs.unlinkSync(req.file.path); // Clean up the file after processing
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
 
-            const categorizedResults = results.map(item => {
-                const description = item.Description.toLowerCase();
-                let matchedCategory = 'Miscellaneous';
+        const results = [];
+        fs.createReadStream(req.file.path)
+            .pipe(csv())
+            .on('data', (data) => results.push(data))
+            .on('end', () => {
+                fs.unlinkSync(req.file.path); // Clean up the file after processing
 
-                for (const [category, keywords] of Object.entries(categories)) {
-                    if (keywords.some(keyword => description.includes(keyword))) {
-                        matchedCategory = category;
-                        break;
+                const categorizedResults = results.map(item => {
+                    const description = item.Description ? item.Description.toLowerCase() : '';
+                    let matchedCategory = 'Miscellaneous';
+
+                    for (const [category, keywords] of Object.entries(categories)) {
+                        if (keywords.some(keyword => description.includes(keyword))) {
+                            matchedCategory = category;
+                            break;
+                        }
                     }
-                }
 
-                return {
-                    ...item,
-                    Category: matchedCategory
-                };
+                    return {
+                        ...item,
+                        Category: matchedCategory
+                    };
+                });
+
+                res.json({ results: categorizedResults });
+            })
+            .on('error', (error) => {
+                console.error('Error reading CSV file:', error);
+                res.status(500).json({ message: 'Failed to process the CSV file.' });
             });
-
-            res.json({ results: categorizedResults });
-        });
+    } catch (error) {
+        console.error('Error during file upload and processing:', error);
+        res.status(500).json({ message: 'An unexpected error occurred while processing the file.' });
+    }
 });
 
 app.get('/api/expenses', (req, res) => {
