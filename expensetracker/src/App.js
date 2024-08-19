@@ -24,7 +24,7 @@ function App() {
     }, []);
 
     const fetchExpenses = async () => {
-        await axios.get('https://financetracker-backend.vercel.app/api/expenses')
+        await axios.get('https://financetracker-backend.vercel.app/')
             .then(response => {
                 setExpenses(response.data);
             })
@@ -47,7 +47,7 @@ function App() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('https://financetracker-backend.vercel.app/api/expenses', input);
+        await axios.post('https://financetracker-backend.vercel.app/', input);
         fetchExpenses();
         setInput({
             title: '',
@@ -66,7 +66,7 @@ function App() {
             const formData = new FormData();
             formData.append('file', file);
 
-            const response = await axios.post('https://financetracker-backend.vercel.app/api/upload', formData, {
+            const response = await axios.post('https://financetracker-backend.vercel.app/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
