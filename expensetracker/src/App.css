@@ -1,0 +1,192 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+ 
+  height: 100%;
+  margin: 0;
+  padding: 0;
+   
+}
+
+.month{
+  margin-top:100px;
+}
+
+.expense{
+  margin-top:25px;
+}
+
+.csv{
+ margin-left: 53px;
+}
+
+.move{
+  margin-right: 10px;
+  margin-top: 35px;
+}
+
+.right{
+  margin-left: 230px;
+}
+
+.moves{
+  margin-left: 90px;
+}
+
+.upload-button-container{
+  margin-top: 10px;
+}
+
+.background {
+  background-image: url('https://media.istockphoto.com/vectors/abstract-financial-background-vector-id625006184?k=6&m=625006184&s=170667a&w=0&h=DKbj0FPFLFpX-hkJ5rTi_erkrkyyg5XLcv_RYeuZr0w=');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+#transaction-form {
+  margin: 30px 0;
+}
+
+#transaction-form input[type="text"], #transaction-form input[type="number"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #5b5353;
+}
+
+#transaction-form input[type="submit"] {
+  background-color: #727e72;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#transaction-form input[type="submit"]:hover {
+  background-color: #c3ef4a;
+}
+
+#transactions {
+  margin: 20px 0;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 10px;
+  border-left: 5px solid #12f119;
+}
+
+.pie-chart-container
+ {
+  width: 100%; /* Ensure charts take full width of container */
+  height: 100%; /* Ensure charts take full height of container */
+  max-width: 400px;
+  max-height: 300px; 
+  background-color: #ffffff; /* Solid white background for the pie chart container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.bar-chart-container {
+  width: 100%; /* Ensure charts take full width of container */
+  height: 100%; /* Ensure charts take full height of container */
+  max-width: 700px;
+  max-height: 700px;
+  background-color: #ffffff; /* Solid white background for the pie chart container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  display: block; /* Ensure canvas is displayed as a block element */
+  width: 100% !important; /* Canvas takes up the full container width */
+  height: 100% !important; /* Canvas takes up the full container height */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between elements */
+  width: 100%; /* Ensure the form takes the full width of its container */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+button {
+  width: 90%; /* Ensure inputs and button take full width */
+  padding: 10px;
+  border: 1px solid #9d8c8c;
+  border-radius: 4px;
+}
+
+.category{
+  margin-top: 25px;
+}
+
+.sal{
+  margin-top:25px;
+}
+
+button {
+  background-color: #08209a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+button:hover {
+  background-color: #f9f915;
+  color: black;
+}
+
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #28b0f4; 
+  color: #fff; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 10px 20px; 
+  border-bottom: 2px solid #555; 
+  z-index: 1000;
+}
+
+h1{
+  color: black;
+  font-size: 28px;
+  font-weight: bolder;
+}
