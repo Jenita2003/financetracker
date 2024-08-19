@@ -7,30 +7,6 @@ import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
-
-const analyzeSentiment = async () => {
-    const API_URL = process.env.REACT_APP_API_URL || 'https://financetracker-backend.vercel.app/';
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setResult(data);
-        setError('');
-      } else {
-        setResult(null);
-        setError(data.error || 'Error analyzing sentiment');
-      }
-    } catch (err) {
-      setError('Error analyzing sentiment');
-    }
-  };
-
 function App() {
     const [expenses, setExpenses] = useState([]);
     const [input, setInput] = useState({
